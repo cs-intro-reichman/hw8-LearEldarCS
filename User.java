@@ -44,12 +44,23 @@
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
         //// Replace the following statement with your code
+        int fCount = this.fCount;
+        String[] listFollowers = this.follows;
+        for (int i = 0; i < fCount; i++) {
+            if (listFollowers[i].equals(name)) return true;
+        }
         return false;
     }
     /** Makes this user follow the given name. If successful, returns true. 
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
         //// Replace the following statement with your code
+        int fCount = this.fCount;
+        if (fCount < maxfCount && this.follows(name) == false) {
+            follows[fCount] = name;
+            this.fCount++;
+            return true;
+        }
         return false;
     }
 
@@ -57,6 +68,16 @@
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
         //// Replace the following statement with your code
+        for(int i = 0; i < this.fCount; i++) {
+            if (follows[i].equals(name)) {
+                for(int j = i; j < this.fCount - 1; j++) {
+                    follows[j] = follows[j+1];
+                    }
+                follows[this.fCount - 1] = null;
+                this.fCount--;
+                return true;
+            }
+        }
         return false;
     }
 
@@ -64,7 +85,15 @@
     /*  Notice: This is the size of the intersection of the two follows lists. */
     public int countMutual(User other) {
          //// Replace the following statement with your code
-        return 0;
+         int mutualFriends = 0;
+         for(int i = 0; i < this.fCount; i++) {
+            for(int j = 0; j < other.fCount; j++) {
+                if (this.follows[i].equals(other.follows[j])) {
+                    mutualFriends++;
+                }
+            }
+         }
+        return mutualFriends;
     }
 
     /** Checks is this user is a friend of the other user.
