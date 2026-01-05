@@ -100,6 +100,11 @@
      *  (if two users follow each other, they are said to be "friends.") */
     public boolean isFriendOf(User other) {
         //// Replace the following statement with your code
+        String userName = this.getName();
+        String otherName = other.getName();
+            if (this.follows(otherName) && other.follows(userName)) {
+                return true;
+            }
         return false;
     }
     /** Returns this user's name, and the names that s/he follows. */
