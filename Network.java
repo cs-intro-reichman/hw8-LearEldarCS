@@ -76,19 +76,22 @@ public class Network {
     public String recommendWhoToFollow(String name) {
         //// Replace the following statement with your code
         User user = getUser(name);
+        if (user == null) return null;
+
         User mostRecommendedUserToFollow = null;
         int maxMutual = -1;
-
-            for (int i = 0; i < userCount; i++) {
-                User otherUser = users[i];
-                    if (user != otherUser) {
-                        int mutual = user.countMutual(otherUser);
-                            if (mutual > maxMutual) {
-                                maxMutual = mutual;
-                                mostRecommendedUserToFollow = otherUser;
-                            }
+        
+        for(int i = 0; i < userCount; i++) {
+            User otherUser = users[i];
+            if (otherUser != null && user != otherUser) {
+                int mutual = user.countMutual(otherUser);
+                    if (mutual > maxMutual) {
+                        maxMutual = mutual;
+                        mostRecommendedUserToFollow = otherUser;
                     }
             }
+        }
+
         return mostRecommendedUserToFollow.getName();
     }
 
