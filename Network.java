@@ -135,8 +135,8 @@ public class Network {
     // Returns a textual description of all the users in this network, and who they follow.
     public String toString() {
        //// Replace the following statement with your code
-       String result = "Network:" + "\n";
-       if (users == null) return result;
+       String result = "Network:\n";
+       if (users == null) return result + '"';
 
        for (int i = 0; i < userCount; i++) {
            result += users[i];
