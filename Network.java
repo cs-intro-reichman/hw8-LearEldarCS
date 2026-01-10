@@ -89,9 +89,8 @@ public class Network {
                         maxMutual = mutual;
                         mostRecommendedUserToFollow = otherUser;
                     }
+                }
             }
-        }
-
         return mostRecommendedUserToFollow.getName();
     }
 
@@ -99,14 +98,36 @@ public class Network {
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
         //// Replace the following statement with your code
-        return null;
+        User mostPopularUserInNetwork = null;
+        int maxNumberOfFollowers = -1;
+
+        for(int i = 0; i < userCount; i++) {
+            User currentUser = users[i];
+                if (currentUser == null) continue;
+            int numberOfFollwers = followeeCount(currentUser.getName());
+                if (numberOfFollwers > maxNumberOfFollowers) {
+                    maxNumberOfFollowers = numberOfFollwers;
+                    mostPopularUserInNetwork = currentUser;
+                }
+        }
+
+        return mostPopularUserInNetwork.getName();
     }
 
     /** Returns the number of times that the given name appears in the follows lists of all
      *  the users in this network. Note: A name can appear 0 or 1 times in each list. */
     private int followeeCount(String name) {
         //// Replace the following statement with your code
-        return 0;
+        int followingCount = 0;
+
+        for (int i = 0; i < userCount; i++) {
+            User user = users[i];
+            if (user == null) continue;
+            if (user.follows(name)) {
+                followingCount++;
+            }
+        }
+        return followingCount;
     }
 
     // Returns a textual description of all the users in this network, and who they follow.
