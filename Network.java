@@ -111,7 +111,9 @@ public class Network {
                 }
         }
 
-        return mostPopularUserInNetwork.getName();
+
+
+        return (mostPopularUserInNetwork != null) ? mostPopularUserInNetwork.getName() : null;
     }
 
     /** Returns the number of times that the given name appears in the follows lists of all
