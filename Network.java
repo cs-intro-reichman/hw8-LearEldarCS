@@ -137,7 +137,7 @@ public class Network {
        //// Replace the following statement with your code
        String result = "Network:\n";
        
-       if (users == null) return "Network:";
+       if (userCount == 0) return "Network:";
 
        for (int i = 0; i < userCount; i++) {
            result += users[i];
