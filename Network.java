@@ -142,6 +142,6 @@ public class Network {
                     result += "\n";
                 }
        }
-       return result;
+       return (users != null) ? result : null;
     }
 }
