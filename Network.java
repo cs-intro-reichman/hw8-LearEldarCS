@@ -136,12 +136,14 @@ public class Network {
     public String toString() {
        //// Replace the following statement with your code
        String result = "Network:\n";
+       if (users == null) return result;
+       
        for (int i = 0; i < userCount; i++) {
            result += users[i];
                 if (i < userCount - 1) {
                     result += "\n";
                 }
        }
-       return (users != null) ? result : null;
+       return result;
     }
 }
